@@ -1,9 +1,22 @@
-# YouTube-Video-Transcriber
-An automated transcription tool that downloads YouTube videos or uses local videos, transcribes them using OpenAI’s Whisper ASR system, and generates styled SRT files. Ideal for creating subtitles or transcribing lectures and speeches.
+# Video-Transcriber
+Effortlessly transcribe videos and create styled subtitles with this powerful wrapper for Whisper's ASR capabilities.
 
 ## Features
-- Generate SRT files.
-- Adjust the style of the SRT files.
+- Transcribe videos from various sources:
+    - YouTube URLs
+    - Local video files
+    - Directories containing multiple videos
+- Produce multiple subtitle formats:
+    - SRT
+    - VTT
+    - TSV
+    - JSON
+    - Plain text
+- Customize subtitle appearance with font and color options
+- Leverage Whisper's advanced transcription features:
+    - Language detection
+    - Speech-to-text translation/transcription
+    - Word level timestamps (experimental)
 
 ## Requirements
 - Python 3.6 or above
@@ -11,18 +24,31 @@ An automated transcription tool that downloads YouTube videos or uses local vide
 - `moviepy`
 - `whisper`
 - `srt`
+- `numpy`
+- `torch`
+- `ffmpeg` (install with `apt update && apt install ffmpeg`)
 
-Before running the script, make sure to install `ffmpeg` by running the following commands in your terminal:
-```bash
-apt update
-apt install ffmpeg
-```
+## Installation
+1. Clone this repository:
+
+    `git clone https://github.com/abdalrohman/Video-Transcriber.git`
+
+2. Install the required dependencies:
+
+    `pip install -r requirements.txt`
 
 ## Usage
-1. Clone this repository.
-2. Install the required dependencies.
-3. Run `python youtube_transcriber.py -y [YOUTUBE_URL]` to transcribe a YouTube video.
-4. Run `python youtube_transcriber.py -l [LOCAL_VIDEO_DIR]` to transcribe local video files.
+`python video_transcriber.py [OPTIONS]`
+
+Options:
+- `-y [YOUTUBE_URL]`: Transcribe a YouTube video.
+- `-l [LOCAL_VIDEO_DIR]`: Transcribe videos from a local directory.
+- `-v [VIDEO_OUTPUT_DIR]`: Directory to save downloaded YouTube videos (default: "Video").
+- `-a [AUDIO_OUTPUT_DIR]`: Directory to save extracted audio files (default: "Audio").
+- `-s [SRT_OUTPUT_DIR]`: Directory to save generated SRT files (default: "Srt").
+- `--font_type [FONT_TYPE]`: Font for subtitles (default: "Arial").
+- `--font_color [FONT_COLOR]`: Color for subtitles (default: "red").
+- ... (See `python video_transcriber.py -h` for more options)
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
