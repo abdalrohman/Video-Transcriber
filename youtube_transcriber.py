@@ -321,10 +321,8 @@ def cli():
 
     runtime = time.time() - start_time
 
-            # Write each text in the SRT format list to the SRT file
-            for text in srt_format_list:
-                write_to_file(srt_filename, text)
-            logger.info(f"Done creating srt file {srt_filename}")
+    hours, remainder = divmod(runtime, 3600)  # Calculate hours and remaining seconds
+    minutes, seconds = divmod(remainder, 60)  # Calculate minutes and seconds
 
     if hours > 0:
         logger.info(f"Total Execution time: {hours:.0f} hours {minutes:02.0f} minutes {seconds:02.0f} seconds")
